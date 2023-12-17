@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tambah Soal Baru</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+</head>
+
+<body style="background: rgb(91, 218, 123)">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+        <ul class="nav justify-content-center">
+          <a class="navbar-brand">        
+              MyITS Portal
+            </a>
+  
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+             
+          </div>
+        </ul>
+      </nav>
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-12">
+                <% if (messages.error) { %>
+                    <div class="alert alert-danger" role="alert"><%- messages.error %></div>
+                    <% } %>
+                <div class="card border-0 shadow rounded">
+                    <div class="card-body">
+                        <h3>Tambah Soal Baru</h3>
+                        <form action="/posts/store" method="post">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Tingkat kesulitan </label>
+                                <select class="form-control" id="exampleFormControlSelect1" name="level_kesulitan" aria-label="Pilih tingkat kesulitan soal">
+                                    <option value="Mudah" >Mudah</option>
+                                    <option value="Sedang" >Sedang</option>
+                                    <option value="Sulit" >Sulit</option>
+                                </select>
+                              </div>
+
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Bab/Materi </label>
+                                <select class="form-control" name="bab" aria-label="Pilih materi" >
+                                    <option value="Risk Managemen" >Risk Managemen</option>
+                                        <option value="Product planning" >Product Planning</option>
+                                        <option value="Product design analysis" >Product Design Analysis</option>
+                                        <option value="Software design management" >Software Design Management</option>
+                                        <option value="Software design process" >Software Design Process</option>
+                                  </select>
+                            </div> 
+
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Soal Ujian</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="soal_ujian"><%= soal_ujian %></textarea>
+                              </div>
+
+                            <div class="form-group">
+                                <label>Jawaban A</label>
+                                <input type="text" class="form-control" autocomplete="off" name="jawabanA" value="<%= jawabanA %>" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Jawaban B</label>
+                                <input type="text" class="form-control" autocomplete="off" name="jawabanB" value="<%= jawabanB %>" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Jawaban C</label>
+                                <input type="text" class="form-control" autocomplete="off" name="jawabanC" value="<%= jawabanC %>" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Jawaban D</label>
+                                <input type="text" class="form-control" autocomplete="off" name="jawabanD" value="<%= jawabanD %>" placeholder="">
+                            </div>
+                       
+                          
+                            
+                            
+                            <button type="submit" class="btn btn-success btn-lg btn-block">SIMPAN SOAL</button>
+                        
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card text-center mt-5">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">MyITS Portal</h5>
+        </div>
+        <div class="card-footer text-muted">
+        </div>
+      </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    </script>
+</body>
+</html>

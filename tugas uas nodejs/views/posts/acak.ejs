@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hasil Acak Soal Ujian</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+</head>
+<body style="background: rgb(178, 221, 250)">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+        <ul class="nav justify-content-center">
+          <a class="navbar-brand">
+              MyITS Portal
+            </a>
+    
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+             
+          </div>
+        </ul>
+      </nav>
+
+    <div class="container mt-3">
+      
+        <div class="card border-0 shadow rounded " style="background: rgb(255, 255, 255)" >
+            <div class="card-body">
+                <h1 class="card-title">25 SOAL UJIAN ACAK </h1>
+            </div>
+        </div>
+
+        <div class="row mt-3" >
+            <div class="col-md-12">
+                <div class="card border-0 shadow rounded">
+                    <div class="card-body" id="soal">
+                        <h3 class="mb-3">Soal Ujian</h3>
+                        <h5 class="mb-3">Berikut ini adalah 25 soal ujian yang telah diacak berdasarkan soal yang ada pada bank soal ujian</h3>
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <!-- <th scope="col">NO.</th>
+                                <th scope="col">Pertanyaan</th> -->
+                                
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <% if(data.length){
+                                    
+                                    for(var i = 0; i< data.length; i++) {%>  
+                                        <tr>
+                                            <th scope="row" class="text-center"><%= (i+1) %></th>
+                                            <td><%= data[i].soal_ujian%> 
+                                                <ol type="a" class="mt-2">
+                                                <li><%= data[i].jawabanA%></li>
+                                                <li><%= data[i].jawabanB%></li>
+                                                <li><%= data[i].jawabanC%></li>
+                                                <li><%= data[i].jawabanD%></li>
+                                            </ol></td>
+                                        
+                                        </tr>
+                                    <% }
+                                    
+                                }else{ %>
+                                    <tr>
+                                        <td colspan="4">
+                                            <div class="alert alert-danger" role="alert">
+                                                Data Tidak Ditemukan !
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <% } %>
+                            </tbody>
+                        </table>  
+                           
+                    </div>
+                    <button class="btn btn-success btn-lg btn-block " id="download" onclick="downloadPDF()">Download Soal Ujian</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function reloadPage() {
+        window.location.reload();
+        }
+    </script>
+    <script>
+        window.onload = function(){
+            document.getElementById("download")
+            .addEventListener("click", ()=>{
+                const soal = this.document.getElementById("soal");
+                console.log("soal");
+                console.log(window);
+                html2pdf().from(soal).save();
+            })
+        }
+    </script>
+
+<div class="card text-center mt-5">
+    <div class="card-header">
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">MyITS Portal</h5>
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+  </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+
+</body>
+</html>
